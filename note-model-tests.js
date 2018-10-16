@@ -1,16 +1,14 @@
-function testNoteString () {
-  var noteObject = new note('My favourite language is JavaScript');
+describe('Note', function() {
+  it('is Note a string', function() {
+    var noteObject = new Note('My favourite language is JavaScript');
+    assert.isString(noteObject.returnNote())
+  })
 
-  isString(noteObject.note);
-};
-testNoteString();
-
-function testNoteListIsArray() {
-  var notelist = new notelist()
-  var noteobject = new note("hello")
-  var noteObject1 = new note("goodbye")
-
-  isArray(notelist.list)
-}
-
-testNoteListIsArray();
+  it('creates and stores a note', function() {
+    var noteList = new NoteList();
+    noteList.create('Hello')
+    noteList.create('second note')
+    assert.isTrue(noteList.list[0].text === 'Hello')
+    assert.isTrue(noteList.list[1].text === 'second note')
+  })
+})
