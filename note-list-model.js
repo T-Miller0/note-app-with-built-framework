@@ -1,15 +1,17 @@
 (function(exports) {
   function NoteList() {
-  this.all = []
+    this.idtracker = 0;
+    this.list = [];
+}
+
+NoteList.prototype.viewAll = function () {
+  return this.list
 };
 
-  NoteList.prototype.viewAll = function () {
-    return this.all;
-  };
-
 NoteList.prototype.create = function (text) {
-  var note = new Note(text);
-  return this.all.push(text);
+  var note = new Note(text, this.idtracker);
+  this.list.push(note);
+  this.idtracker ++;
 };
   exports.NoteList = NoteList;
 })(this);
